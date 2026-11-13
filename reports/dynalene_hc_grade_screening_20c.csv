@@ -1,0 +1,6 @@
+grade,temperature_C,cp_kJ_kgK,thermal_conductivity_W_mK,density_kg_m3,dynamic_viscosity_mPa_s,source_id,evidence_type,notes
+HC-10,20,3.320,0.524,1190,1.80,SRC-DYNALENE-HC-GUIDE-2025,manufacturer_typical,2025 engineering guide
+HC-20,20,3.212,0.523,1237,2.10,SRC-DYNALENE-HC-GUIDE-2025,manufacturer_typical,2025 engineering guide
+HC-30,20,3.077,0.519,1275,2.50,SRC-DYNALENE-HC-GUIDE-2025,manufacturer_typical,2025 engineering guide
+HC-40,20,2.930,0.509,1315,2.70,SRC-DYNALENE-HC-GUIDE-2025,manufacturer_typical,2025 engineering guide
+HC-50,20,2.701,0.505,1340,3.20,SRC-DYNALENE-HC-TDS,manufacturer_typical,2020 technical data sheet

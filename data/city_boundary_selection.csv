@@ -1,0 +1,4 @@
+city_id,city_name,country,ghsl_layer,ghsl_id_field,ghsl_id_value,ghsl_epoch_field,ghsl_epoch_value,selection_notes
+DXB,Dubai,United Arab Emirates,data/raw/ghsl/extracted/GHS_WUP_MTUC_MT_GLOBE_R2025A_v1_1.shp,ID_UC_G0,865,Year,2020,Provisional primary urban-centre match; 2020 polygon valid; nearest centroid 7.95 km. Keep separate from nearby centres unless metro-boundary rationale supports aggregation.
+AUH,Abu Dhabi,United Arab Emirates,data/raw/ghsl/extracted/GHS_WUP_MTUC_MT_GLOBE_R2025A_v1_1.shp,ID_UC_G0,309,Year,2020,Provisional primary urban-centre match; 2020 polygon valid; nearest centroid 5.82 km. Nearby candidate 462 is a separate urban-centre record.
+DOH,Doha,Qatar,data/raw/ghsl/extracted/GHS_WUP_MTUC_MT_GLOBE_R2025A_v1_1.shp,ID_UC_G0,141,Year,2020,Provisional primary urban-centre match; 2020 polygon valid; nearest centroid 7.66 km. Nearby candidate 737 is a separate urban-centre record.

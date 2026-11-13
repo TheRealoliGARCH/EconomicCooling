@@ -1,0 +1,29 @@
+name: economiccooling
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - numpy
+  - pandas
+  - scipy
+  - geopandas
+  - pyogrio
+  - shapely
+  - pyproj
+  - rasterio
+  - xarray
+  - rioxarray
+  - netcdf4
+  - h5py
+  - h5netcdf
+  - zarr
+  - dask
+  - requests
+  - tqdm
+  - pyyaml
+  - matplotlib
+  - statsmodels
+  - jupyterlab
+  - pip:
+      - cdsapi>=0.7.7

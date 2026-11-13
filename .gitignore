@@ -1,0 +1,16 @@
+# Downloaded source archives and derived local rasters/tables
+data/raw/
+data/processed/
+reports/ghsl_layer_inventory.json
+*.hdf
+*.h5
+*.nc
+*.grib
+*.tif
+*.tiff
+*.vrt
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.conda/
+.venv/

@@ -1,0 +1,75 @@
+name: Economic Cooling reproducible validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/economic-cooling-validation.yml"
+      - "data/**"
+      - "scripts/**"
+      - "reports/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: economic-cooling-validation-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate-and-reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate source-linked datasets
+        run: python scripts/validate_dataset.py
+
+      - name: Rebuild 20 C comparison
+        run: python scripts/compare_coolants.py
+
+      - name: Rebuild HC performance surface
+        run: python scripts/build_hc_performance_surface.py
+
+      - name: Check reproducible output structure
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          checks = {
+              "reports/comparison_at_20C.csv": None,
+              "reports/hc_performance_surface.csv": 330,
+          }
+          for filename, expected_rows in checks.items():
+              path = Path(filename)
+              if not path.is_file():
+                  raise SystemExit(f"Missing generated output: {filename}")
+              with path.open(newline="", encoding="utf-8") as handle:
+                  rows = list(csv.DictReader(handle))
+              if not rows:
+                  raise SystemExit(f"Generated output is empty: {filename}")
+              if expected_rows is not None and len(rows) != expected_rows:
+                  raise SystemExit(
+                      f"{filename}: expected {expected_rows} rows, got {len(rows)}"
+                  )
+              print(f"PASS {filename}: {len(rows)} data rows")
+          PY
+
+      - name: Upload reproducible outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: economic-cooling-reproducible-outputs
+          path: |
+            reports/comparison_at_20C.csv
+            reports/hc_performance_surface.csv
+          if-no-files-found: error
+          retention-days: 14
